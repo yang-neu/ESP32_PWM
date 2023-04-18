@@ -21,7 +21,7 @@
   Therefore, their executions are not blocked by bad-behaving functions / tasks.
   This important feature is absolutely necessary for mission-critical tasks.
 
-  Version: 1.3.3
+  Version: 1.3.3.1
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
@@ -36,6 +36,7 @@
   1.3.1   K Hoang      04/03/2022 Fix `DutyCycle` and `New Period` display bugs. Display warning only when debug level > 3
   1.3.2   K Hoang      09/05/2022 Remove crashing PIN_D24 from examples
   1.3.3   K Hoang      16/06/2022 Add support to new Adafruit boards
+  1.3.3.1 Alex. Y      18/04/2023 Increace the frequence up to 2000Hz
 *****************************************************************************************************************************/
 
 #pragma once
@@ -131,7 +132,7 @@ class ESP32_PWM_ISR
     {
       uint32_t period = 0;
       
-      if ( ( frequency > 0.0 ) && ( frequency <= 500.0 ) )
+      if ( ( frequency > 0.0 ) && ( frequency <= 2000.0 ) )
       {
 #if USING_MICROS_RESOLUTION
       // period in us
@@ -143,7 +144,7 @@ class ESP32_PWM_ISR
       }
       else
       {       
-        PWM_LOGERROR("Error: Invalid frequency, max is 500Hz");
+        PWM_LOGERROR("Error: Invalid frequency, max is 2000Hz");
         
         return -1;
       }
@@ -167,7 +168,7 @@ class ESP32_PWM_ISR
     {
       uint32_t period = 0;
       
-      if ( ( frequency > 0.0 ) && ( frequency <= 500.0 ) )
+      if ( ( frequency > 0.0 ) && ( frequency <= 2000.0 ) )
       {
 #if USING_MICROS_RESOLUTION
       // period in us
@@ -179,7 +180,7 @@ class ESP32_PWM_ISR
       }
       else
       {       
-        PWM_LOGERROR("Error: Invalid frequency, max is 500Hz");
+        PWM_LOGERROR("Error: Invalid frequency, max is 2000Hz");
         return false;
       }
       
